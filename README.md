@@ -35,7 +35,8 @@ Lukáš Divíšek
 [Video](https://youtu.be/s0drJbCHgkk)
 
 Celý projekt jsem dělal sám.
-Lukáš Divíšek
+
+## Lukáš Divíšek
 
 
 
