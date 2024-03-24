@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7n716fbrc0h8"]
+
+[ext_resource type="Script" path="res://Main/Boilers/GameModes/GemGrab/Gem.gd" id="1_fw8df"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xymh2"]
+bg_color = Color(0.847059, 0, 0.937255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.645776, 0.000671135, 0.715825, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
+
+[node name="Gem" type="Area2D" groups=["Gem"]]
+script = ExtResource("1_fw8df")
+
+[node name="Gem" type="Panel" parent="."]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xymh2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-24, 0, 0, -24, 24, 0, 0, 24)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

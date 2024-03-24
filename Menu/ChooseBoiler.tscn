@@ -1,0 +1,197 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1ix86c1qdvfr"]
+
+[ext_resource type="PackedScene" uid="uid://b30vwkm3nuaf1" path="res://Menu/Buttons/Button_try.tscn" id="1_ruxxx"]
+[ext_resource type="Script" path="res://Menu/ChooseBoiler.gd" id="1_t6typ"]
+[ext_resource type="PackedScene" uid="uid://cdhh0pab1fw8x" path="res://Menu/Buttons/Button_select.tscn" id="2_qdr0b"]
+[ext_resource type="Texture2D" uid="uid://4hvms0hld5ne" path="res://Src/kelly.png" id="2_xlveh"]
+[ext_resource type="Texture2D" uid="uid://yc5o4jwukewu" path="res://Src/noxangy.png" id="5_5y4vl"]
+[ext_resource type="Texture2D" uid="uid://do6vlnqy7xqja" path="res://Src/Rass.png" id="6_2lajp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lc6p"]
+bg_color = Color(0.6, 0.6, 0.6, 0.505882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tpq5"]
+bg_color = Color(0.6, 0.6, 0.6, 0.505882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qas08"]
+bg_color = Color(0.6, 0.6, 0.6, 0.505882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2nsd"]
+bg_color = Color(0.921569, 0.796078, 0.2, 1)
+border_width_left = 200
+border_width_top = 200
+border_width_right = 200
+border_width_bottom = 200
+border_color = Color(0.545098, 0.466667, 0.0784314, 1)
+border_blend = true
+
+[node name="ChooseBoiler" type="Node2D"]
+script = ExtResource("1_t6typ")
+
+[node name="boilers" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 158.0
+offset_top = 147.0
+offset_right = 1015.0
+offset_bottom = 502.0
+
+[node name="Boiler1" type="Panel" parent="boilers"]
+layout_mode = 2
+offset_left = -43.0
+offset_top = 25.0
+offset_right = 277.0
+offset_bottom = 455.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4lc6p")
+
+[node name="Sprite2D" type="Sprite2D" parent="boilers/Boiler1"]
+position = Vector2(113, 235)
+rotation = -1.18082
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_xlveh")
+
+[node name="Button_try" parent="boilers/Boiler1" instance=ExtResource("1_ruxxx")]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 347.0
+offset_right = 128.0
+offset_bottom = 407.0
+
+[node name="Button_select" parent="boilers/Boiler1" instance=ExtResource("2_qdr0b")]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 346.0
+offset_right = 292.0
+offset_bottom = 406.0
+
+[node name="Name" type="Label" parent="boilers/Boiler1"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 6.0
+offset_right = 224.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 40
+text = "Kelly"
+
+[node name="Class" type="Label" parent="boilers/Boiler1"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 59.0
+offset_right = 227.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 25
+text = "Marksman"
+
+[node name="Boiler2" type="Panel" parent="boilers"]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 25.0
+offset_right = 644.0
+offset_bottom = 455.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8tpq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="boilers/Boiler2"]
+position = Vector2(109, 231)
+rotation = -1.18082
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_5y4vl")
+
+[node name="Button_try" parent="boilers/Boiler2" instance=ExtResource("1_ruxxx")]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 347.0
+offset_right = 128.0
+offset_bottom = 407.0
+
+[node name="Button_select" parent="boilers/Boiler2" instance=ExtResource("2_qdr0b")]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 346.0
+offset_right = 292.0
+offset_bottom = 406.0
+
+[node name="Name" type="Label" parent="boilers/Boiler2"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 6.0
+offset_right = 217.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 40
+text = "Nox"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Class" type="Label" parent="boilers/Boiler2"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 57.0
+offset_right = 214.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 25
+text = "Assassin"
+
+[node name="Boiler3" type="Panel" parent="boilers"]
+layout_mode = 0
+offset_left = 691.0
+offset_top = 25.0
+offset_right = 1011.0
+offset_bottom = 455.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qas08")
+
+[node name="Sprite2D" type="Sprite2D" parent="boilers/Boiler3"]
+position = Vector2(109, 231)
+rotation = -1.18082
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_2lajp")
+
+[node name="Button_try" parent="boilers/Boiler3" instance=ExtResource("1_ruxxx")]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 347.0
+offset_right = 128.0
+offset_bottom = 407.0
+
+[node name="Button_select" parent="boilers/Boiler3" instance=ExtResource("2_qdr0b")]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 346.0
+offset_right = 292.0
+offset_bottom = 406.0
+
+[node name="Name" type="Label" parent="boilers/Boiler3"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 6.0
+offset_right = 217.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 40
+text = "Razz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Class" type="Label" parent="boilers/Boiler3"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 60.0
+offset_right = 188.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 25
+text = "Tank"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 136.0
+offset_top = 48.0
+offset_right = 1151.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 45
+text = "Welcome! Select a Boiler you want to play with"
+
+[node name="BG" type="Panel" parent="."]
+show_behind_parent = true
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2nsd")

@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3mqbc8eqcryd"]
+
+[ext_resource type="Script" path="res://Main/Practice/PracticeEnemy.gd" id="1_eivmn"]
+[ext_resource type="Texture2D" uid="uid://wdfw0hlu7rde" path="res://icon.svg" id="1_jj68a"]
+[ext_resource type="PackedScene" uid="uid://8t4s0t0pv7q2" path="res://Main/Boilers/HealthBarUI.tscn" id="4_gspxj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08pum"]
+size = Vector2(38, 38)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlb4k"]
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uyv7"]
+size = Vector2(40, 40)
+
+[node name="PracticeEnemy" type="RigidBody2D" groups=["Enemy"]]
+position = Vector2(330, 219)
+collision_layer = 32
+collision_mask = 28
+gravity_scale = 0.0
+script = ExtResource("1_eivmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_jj68a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_08pum")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBarUI" parent="UI" instance=ExtResource("4_gspxj")]
+layout_mode = 1
+offset_left = -1.0
+offset_top = -61.0
+offset_right = -1.0
+offset_bottom = -61.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="UnderUI" type="Control" parent="."]
+show_behind_parent = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -39.5
+offset_right = 39.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Circle" type="Panel" parent="UnderUI"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 79.0
+offset_bottom = 79.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jlb4k")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_0uyv7")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

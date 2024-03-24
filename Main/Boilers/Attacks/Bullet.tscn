@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmxdw2mfcc3gj"]
+
+[ext_resource type="Script" path="res://Main/Boilers/Attacks/Bullet.gd" id="1_27dvy"]
+[ext_resource type="Texture2D" uid="uid://canjkxnp33p0r" path="res://Src/white.png" id="2_fo42g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5dl2"]
+size = Vector2(29.8006, 30.1981)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jk0y8"]
+size = Vector2(32, 32)
+
+[node name="Bullet" type="RigidBody2D" groups=["Bullet"]]
+collision_layer = 0
+collision_mask = 12
+gravity_scale = 0.0
+contact_monitor = true
+script = ExtResource("1_27dvy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.43051e-06, 0)
+scale = Vector2(0.152381, 0.133333)
+texture = ExtResource("2_fo42g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.17233e-07, 2.98023e-08)
+rotation = 0.00662412
+shape = SubResource("RectangleShape2D_o5dl2")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Bullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_jk0y8")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+scale = Vector2(1, 5.8)
+target_position = Vector2(22, 0)
+collision_mask = 12
+collide_with_areas = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

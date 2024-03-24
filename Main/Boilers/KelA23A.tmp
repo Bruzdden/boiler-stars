@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccb8u3uauaja4"]
+
+[ext_resource type="Script" path="res://Main/Boilers/Boiler.gd" id="1_tvhrc"]
+[ext_resource type="Texture2D" uid="uid://da227tcrtviea" path="res://Src/KellyFirstt.png" id="2_qnauk"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="3_vc7p1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ehig"]
+radius = 46.0109
+
+[node name="Kelly" type="CharacterBody2D" node_paths=PackedStringArray("movement", "aim", "superAim")]
+position = Vector2(638, 383)
+script = ExtResource("1_tvhrc")
+movement = NodePath("UI/Movement")
+aim = NodePath("UI/Aim")
+superAim = NodePath("UI/SuperAim")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Movement" parent="UI" instance=ExtResource("3_vc7p1")]
+modulate = Color(0, 0, 1, 1)
+
+[node name="Aim" parent="UI" instance=ExtResource("3_vc7p1")]
+modulate = Color(1, 0, 0, 1)
+offset_left = 968.0
+offset_top = -313.0
+offset_right = 1268.0
+offset_bottom = -13.0
+
+[node name="SuperAim" parent="UI" instance=ExtResource("3_vc7p1")]
+modulate = Color(1, 1, 0, 1)
+offset_left = 757.0
+offset_top = -193.0
+offset_right = 1057.0
+offset_bottom = 107.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Skin" type="Sprite2D" parent="."]
+position = Vector2(2, -54)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_qnauk")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ehig")
+
+[node name="Bush_range_visibility" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bush_range_visibility"]
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false

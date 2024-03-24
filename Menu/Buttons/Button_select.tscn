@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdhh0pab1fw8x"]
+
+[ext_resource type="Script" path="res://Menu/Buttons/Button_select.gd" id="1_f7bhj"]
+[ext_resource type="Script" path="res://Menu/Buttons/TextButton.gd" id="2_p3cyo"]
+[ext_resource type="AudioStream" uid="uid://b2cqptvlai21v" path="res://Src/click-21156 (1).mp3" id="3_6f8ux"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdvuk"]
+bg_color = Color(0.886275, 0.72549, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.552941, 0.482353, 0.0823529, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Button_select" type="TextureButton"]
+offset_right = 140.0
+offset_bottom = 60.0
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_f7bhj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 60.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tdvuk")
+script = ExtResource("2_p3cyo")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 6.0
+offset_right = 112.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 30
+text = "Select"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6f8ux")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

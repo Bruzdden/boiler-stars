@@ -1,0 +1,731 @@
+[gd_scene load_steps=33 format=3 uid="uid://bcvxcnwrjwusy"]
+
+[ext_resource type="Script" path="res://Main/Boilers/Boiler.gd" id="1_ey1gi"]
+[ext_resource type="PackedScene" uid="uid://bmxdw2mfcc3gj" path="res://Main/Boilers/Attacks/Bullet.tscn" id="2_rtiyi"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="2_t8ij3"]
+[ext_resource type="Texture2D" uid="uid://canjkxnp33p0r" path="res://Src/white.png" id="3_2ux4q"]
+[ext_resource type="PackedScene" uid="uid://c0f4rn7480jf3" path="res://Main/Boilers/Attacks/Slash.tscn" id="3_rtejk"]
+[ext_resource type="PackedScene" uid="uid://bo87jk8il5ov8" path="res://Main/Boilers/Attacks/Flower.tscn" id="4_pa8fm"]
+[ext_resource type="Texture2D" uid="uid://4hvms0hld5ne" path="res://Src/kelly.png" id="6_ohoas"]
+[ext_resource type="PackedScene" uid="uid://cmwtmxa78dusb" path="res://Menu/Buttons/Button_exit.tscn" id="7_my5yd"]
+[ext_resource type="PackedScene" uid="uid://n8ojq8ajkceo" path="res://Main/Boilers/GameModes/GemGrab/GemGrabUI.tscn" id="8_imkuj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn2y3"]
+bg_color = Color(1, 0, 0, 0.168627)
+draw_center = false
+border_width_left = 100
+border_width_top = 100
+border_width_right = 100
+border_width_bottom = 100
+border_color = Color(1, 0, 0, 0.360784)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bngj"]
+bg_color = Color(0.215686, 0.215686, 0.215686, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 1, 0, 0.6)
+
+[sub_resource type="Animation" id="Animation_frid0"]
+resource_name = "AddHealth"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:shadow_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:shadow_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 0, 0.6), Color(0, 1, 0, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_p08hi"]
+resource_name = "AnimationDamage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:shadow_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:shadow_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.6), Color(1, 0, 0, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_us0jm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:shadow_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:shadow_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_owxu8"]
+_data = {
+"AddHealth": SubResource("Animation_frid0"),
+"AnimationDamage": SubResource("Animation_p08hi"),
+"RESET": SubResource("Animation_us0jm")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ie2ra"]
+bg_color = Color(0.215686, 0.215686, 0.215686, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ok16"]
+bg_color = Color(0.215686, 0.215686, 0.215686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3vy5"]
+bg_color = Color(0.215686, 0.215686, 0.215686, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ernst"]
+bg_color = Color(0.698039, 0, 0.792157, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.394734, 0.00027911, 0.451829, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o5yi"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.756863, 0, 0.756863, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+shadow_color = Color(0.756863, 0, 0.756863, 1)
+
+[sub_resource type="Animation" id="Animation_2oci0"]
+resource_name = "AbilityActivated"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AbilityActivatedPanel:theme_override_styles/panel:shadow_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_2r3cg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AbilityActivatedPanel:theme_override_styles/panel:shadow_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbd6p"]
+_data = {
+"AbilityActivated": SubResource("Animation_2oci0"),
+"RESET": SubResource("Animation_2r3cg")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_youdu"]
+bg_color = Color(0.847059, 0, 0.937255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.645776, 0.000671135, 0.715825, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7pmn"]
+radius = 195.164
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_op4un"]
+bg_color = Color(0.0470588, 0.729412, 0, 0.686275)
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.047675, 0.727554, 9.62615e-07, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vs4he"]
+bg_color = Color(0.219608, 0.690196, 0.690196, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.116081, 0.425013, 0.425029, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fai5a"]
+bg_color = Color(0.6, 0.6, 0.6, 0.466667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utcii"]
+bg_color = Color(0.6, 0.6, 0.6, 0.466667)
+corner_radius_top_left = 100
+corner_radius_bottom_left = 100
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qnk6"]
+bg_color = Color(0.6, 0.6, 0.6, 0.505882)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_detail = 1
+expand_margin_left = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rgdl"]
+radius = 23.0868
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkc4i"]
+radius = 23.0868
+
+[node name="Boiler" type="CharacterBody2D" node_paths=PackedStringArray("movement", "aim", "superAim")]
+position = Vector2(640, 360)
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_ey1gi")
+movement = NodePath("UI/Movement")
+aim = NodePath("UI/Aim")
+superAim = NodePath("UI/SuperAim")
+maxAmmo = 3
+maxBarValue = 100
+Bullet = ExtResource("2_rtiyi")
+Slash = ExtResource("3_rtejk")
+Flower = ExtResource("4_pa8fm")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Movement" parent="UI" instance=ExtResource("2_t8ij3")]
+modulate = Color(0, 0, 1, 1)
+offset_left = 109.0
+offset_top = -299.0
+offset_right = 409.0
+offset_bottom = 1.0
+scale = Vector2(0.8, 0.8)
+
+[node name="Aim" parent="UI" instance=ExtResource("2_t8ij3")]
+modulate = Color(1, 0, 0, 1)
+offset_left = 935.0
+offset_top = -299.0
+offset_right = 1235.0
+offset_bottom = 1.0
+scale = Vector2(0.8, 0.8)
+use_input_actions = false
+
+[node name="SuperAim" parent="UI" instance=ExtResource("2_t8ij3")]
+visible = false
+modulate = Color(1, 1, 0, 1)
+offset_left = 759.0
+offset_top = -180.0
+offset_right = 1059.0
+offset_bottom = 120.0
+scale = Vector2(0.4, 0.4)
+use_input_actions = false
+
+[node name="BoilerUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthUI" type="Control" parent="UI/BoilerUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 553.0
+offset_top = 210.0
+offset_right = 727.0
+offset_bottom = 247.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI/BoilerUI/HealthUI"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 18.0
+offset_right = 126.0
+offset_bottom = 34.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_2ux4q")
+texture_progress = ExtResource("3_2ux4q")
+tint_under = Color(0.301961, 0.301961, 0.301961, 1)
+tint_progress = Color(0, 0.882353, 0, 1)
+
+[node name="Label" type="Label" parent="UI/BoilerUI/HealthUI"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 13.0
+offset_right = 108.0
+offset_bottom = 38.0
+theme_override_font_sizes/font_size = 15
+text = "100000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageScreen" type="Panel" parent="UI/BoilerUI/HealthUI"]
+layout_mode = 0
+offset_left = -444.0
+offset_top = -156.0
+offset_right = 620.0
+offset_bottom = 444.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yn2y3")
+
+[node name="Panel" type="Panel" parent="UI/BoilerUI/HealthUI"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 44.0
+offset_top = 16.0
+offset_right = 129.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bngj")
+
+[node name="HealthBarAnimation" type="AnimationPlayer" parent="UI/BoilerUI/HealthUI"]
+libraries = {
+"": SubResource("AnimationLibrary_owxu8")
+}
+
+[node name="Regeneration" type="Timer" parent="UI/BoilerUI/HealthUI"]
+wait_time = 1.5
+
+[node name="RegenerationWait" type="Timer" parent="UI/BoilerUI/HealthUI"]
+wait_time = 3.5
+one_shot = true
+
+[node name="AmmoUI" type="Control" parent="UI/BoilerUI"]
+anchors_preset = 0
+offset_left = 246.0
+offset_top = 133.0
+offset_right = 286.0
+offset_bottom = 173.0
+scale = Vector2(0.6, 0.6)
+
+[node name="Bar1" type="TextureProgressBar" parent="UI/BoilerUI/AmmoUI"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 200.0
+offset_right = 628.0
+offset_bottom = 216.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_2ux4q")
+texture_progress = ExtResource("3_2ux4q")
+tint_under = Color(0.537011, 0.537011, 0.537011, 1)
+tint_progress = Color(0.690196, 0.415686, 0.113725, 1)
+
+[node name="Panel" type="Panel" parent="UI/BoilerUI/AmmoUI/Bar1"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 46.0
+offset_bottom = 19.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ie2ra")
+
+[node name="Bar2" type="TextureProgressBar" parent="UI/BoilerUI/AmmoUI"]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 200.0
+offset_right = 678.0
+offset_bottom = 216.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_2ux4q")
+texture_progress = ExtResource("3_2ux4q")
+tint_under = Color(0.537011, 0.537011, 0.537011, 1)
+tint_progress = Color(0.690196, 0.415686, 0.113725, 1)
+
+[node name="Panel" type="Panel" parent="UI/BoilerUI/AmmoUI/Bar2"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 48.0
+offset_bottom = 19.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6ok16")
+
+[node name="Bar3" type="TextureProgressBar" parent="UI/BoilerUI/AmmoUI"]
+layout_mode = 0
+offset_left = 682.0
+offset_top = 200.0
+offset_right = 726.0
+offset_bottom = 216.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_2ux4q")
+texture_progress = ExtResource("3_2ux4q")
+tint_under = Color(0.537011, 0.537011, 0.537011, 1)
+tint_progress = Color(0.690196, 0.415686, 0.113725, 1)
+
+[node name="Panel" type="Panel" parent="UI/BoilerUI/AmmoUI/Bar3"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 48.0
+offset_bottom = 19.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_m3vy5")
+
+[node name="ShootReadyTimer" type="Timer" parent="UI/BoilerUI/AmmoUI"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Name" type="Label" parent="UI/BoilerUI"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 205.0
+offset_right = 678.0
+offset_bottom = 226.0
+theme_override_font_sizes/font_size = 13
+text = "Dobruzdden"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Abilities" type="Control" parent="UI/BoilerUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AbilityMarksman" type="TextureButton" parent="UI/BoilerUI/Abilities"]
+visible = false
+layout_mode = 0
+offset_left = 818.0
+offset_top = 355.0
+offset_right = 890.0
+offset_bottom = 427.0
+
+[node name="Panel" type="Panel" parent="UI/BoilerUI/Abilities/AbilityMarksman"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ernst")
+
+[node name="AbilityAssassin" type="TextureButton" parent="UI/BoilerUI/Abilities"]
+visible = false
+layout_mode = 0
+offset_left = 772.0
+offset_top = 446.0
+offset_right = 844.0
+offset_bottom = 518.0
+
+[node name="Panel" type="Panel" parent="UI/BoilerUI/Abilities/AbilityAssassin"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ernst")
+
+[node name="DashTimer" type="Timer" parent="UI/BoilerUI/Abilities"]
+wait_time = 0.2
+one_shot = true
+
+[node name="AbilityTank" type="TextureButton" parent="UI/BoilerUI/Abilities"]
+visible = false
+layout_mode = 0
+offset_left = 860.0
+offset_top = 450.0
+offset_right = 932.0
+offset_bottom = 522.0
+
+[node name="Panel" type="Panel" parent="UI/BoilerUI/Abilities/AbilityTank"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ernst")
+
+[node name="StompTimer" type="Timer" parent="UI/BoilerUI/Abilities"]
+wait_time = 0.2
+one_shot = true
+
+[node name="AbilityActivatedPanel" type="Panel" parent="UI/BoilerUI/Abilities"]
+visible = false
+layout_mode = 0
+offset_left = 632.0
+offset_top = 390.0
+offset_right = 648.0
+offset_bottom = 406.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4o5yi")
+
+[node name="AbilityActivatedAnimation" type="AnimationPlayer" parent="UI/BoilerUI/Abilities"]
+libraries = {
+"": SubResource("AnimationLibrary_gbd6p")
+}
+
+[node name="Button_exit" parent="UI/BoilerUI" instance=ExtResource("7_my5yd")]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 574.0
+offset_top = 642.0
+offset_right = 674.0
+offset_bottom = 692.0
+grow_horizontal = 2
+
+[node name="Gem" type="Control" parent="UI/BoilerUI"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Gem" type="Panel" parent="UI/BoilerUI/Gem"]
+layout_mode = 0
+offset_left = 614.4
+offset_top = 147.4
+offset_right = 662.4
+offset_bottom = 195.4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_youdu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UI/BoilerUI/Gem"]
+position = Vector2(638.4, 171.4)
+build_mode = 1
+polygon = PackedVector2Array(-24, 0, 0, -24, 24, 0, 0, 24)
+
+[node name="Label" type="Label" parent="UI/BoilerUI/Gem"]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 158.0
+offset_right = 658.0
+offset_bottom = 184.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GemGrabUI" parent="UI/BoilerUI" instance=ExtResource("8_imkuj")]
+layout_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
+
+[node name="StompHitbox" type="Area2D" parent="." groups=["Stomper"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompHitbox"]
+shape = SubResource("CircleShape2D_a7pmn")
+disabled = true
+
+[node name="Boiler" type="Node2D" parent="."]
+
+[node name="Skin" type="Sprite2D" parent="Boiler"]
+position = Vector2(-13, -17)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("6_ohoas")
+
+[node name="UnderUI" type="Control" parent="Boiler"]
+show_behind_parent = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 38.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Circle" type="Panel" parent="Boiler/UnderUI"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_op4un")
+
+[node name="Look" type="Control" parent="Boiler"]
+visible = false
+show_behind_parent = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -6.0
+offset_top = -69.0
+offset_right = 10.0
+offset_bottom = -53.0
+
+[node name="Panel" type="Panel" parent="Boiler/Look"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vs4he")
+
+[node name="Bush_range_visibility" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bush_range_visibility"]
+
+[node name="AimShow" type="Node2D" parent="."]
+show_behind_parent = true
+
+[node name="AimPanel1" type="Panel" parent="AimShow"]
+visible = false
+show_behind_parent = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 48.0
+offset_right = 24.0
+offset_bottom = 432.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fai5a")
+
+[node name="AimPanel2" type="Panel" parent="AimShow"]
+visible = false
+show_behind_parent = true
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_utcii")
+
+[node name="AimPanel3" type="Panel" parent="AimShow"]
+visible = false
+show_behind_parent = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 51.0
+offset_right = 120.0
+offset_bottom = 251.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5qnk6")
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_7rgdl")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_wkc4i")
+
+[connection signal="timeout" from="UI/BoilerUI/HealthUI/Regeneration" to="." method="_on_regeneration_timeout"]
+[connection signal="timeout" from="UI/BoilerUI/HealthUI/RegenerationWait" to="." method="_on_regeneration_wait_timeout"]
+[connection signal="pressed" from="UI/BoilerUI/Abilities/AbilityMarksman" to="." method="_on_ability_marksman_pressed"]
+[connection signal="pressed" from="UI/BoilerUI/Abilities/AbilityAssassin" to="." method="_on_ability_assasin_pressed"]
+[connection signal="timeout" from="UI/BoilerUI/Abilities/DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="pressed" from="UI/BoilerUI/Abilities/AbilityTank" to="." method="_on_ability_tank_pressed"]
+[connection signal="timeout" from="UI/BoilerUI/Abilities/StompTimer" to="." method="_on_stomp_timer_timeout"]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0f4rn7480jf3"]
+
+[ext_resource type="Script" path="res://Main/Boilers/Attacks/Bullet.gd" id="1_61jeo"]
+[ext_resource type="Texture2D" uid="uid://canjkxnp33p0r" path="res://Src/white.png" id="2_r1el0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5dl2"]
+size = Vector2(16.0328, 80.0314)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jk0y8"]
+size = Vector2(16, 80)
+
+[node name="Slash" type="RigidBody2D" groups=["Bullet"]]
+collision_layer = 0
+collision_mask = 12
+gravity_scale = 0.0
+contact_monitor = true
+script = ExtResource("1_61jeo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(70, 80)
+scale = Vector2(0.0761905, 0.333333)
+texture = ExtResource("2_r1el0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(70, 80)
+rotation = 0.00662412
+shape = SubResource("RectangleShape2D_o5dl2")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Bullet"]]
+position = Vector2(70, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-5.72205e-06, -4.57764e-05)
+shape = SubResource("RectangleShape2D_jk0y8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

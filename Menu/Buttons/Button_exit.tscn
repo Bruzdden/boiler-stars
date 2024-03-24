@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmwtmxa78dusb"]
+
+[ext_resource type="Script" path="res://Menu/Buttons/Button_exit.gd" id="1_ckebk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q65i8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.52549)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.619608, 0.619608, 0.619608, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Button_exit" type="TextureButton"]
+offset_right = 100.0
+offset_bottom = 50.0
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_ckebk")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 50.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q65i8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 6.0
+offset_right = 72.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 25
+text = "exit"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

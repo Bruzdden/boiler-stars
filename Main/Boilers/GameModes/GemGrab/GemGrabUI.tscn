@@ -1,0 +1,187 @@
+[gd_scene load_steps=6 format=3 uid="uid://n8ojq8ajkceo"]
+
+[ext_resource type="Script" path="res://Main/Boilers/GameModes/GemGrab/GemGrabUI.gd" id="1_jqoal"]
+[ext_resource type="Texture2D" uid="uid://canjkxnp33p0r" path="res://Src/white.png" id="2_ms2wt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byau2"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g58do"]
+bg_color = Color(0.847059, 0, 0.937255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.645776, 0.000671135, 0.715825, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4d51"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="GemGrabUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jqoal")
+
+[node name="Blue" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 328.0
+offset_bottom = 104.0
+
+[node name="Bar" type="Panel" parent="Blue"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 304.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_byau2")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Blue"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 296.0
+offset_bottom = 64.0
+max_value = 10.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_ms2wt")
+texture_progress = ExtResource("2_ms2wt")
+tint_under = Color(0.345098, 0.572549, 1, 1)
+tint_progress = Color(0, 0, 1, 1)
+
+[node name="Gem" type="Panel" parent="Blue"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g58do")
+
+[node name="Count" type="Label" parent="Blue"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 17.0
+offset_right = 60.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Red" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 904.0
+offset_top = 24.0
+offset_right = 1208.0
+offset_bottom = 104.0
+
+[node name="Bar" type="Panel" parent="Red"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_byau2")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Red"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 296.0
+offset_bottom = 64.0
+max_value = 10.0
+value = 5.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = ExtResource("2_ms2wt")
+texture_progress = ExtResource("2_ms2wt")
+tint_under = Color(1, 0.376471, 0.309804, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="Gem" type="Panel" parent="Red"]
+layout_mode = 0
+offset_left = 272.0
+offset_right = 352.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g58do")
+
+[node name="Count" type="Label" parent="Red"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 17.0
+offset_right = 332.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameTime" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 624.0
+offset_top = 16.0
+offset_right = 664.0
+offset_bottom = 56.0
+
+[node name="GameTimePanel" type="Panel" parent="GameTime"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -16.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 48.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s4d51")
+
+[node name="GameTimeText" type="Label" parent="GameTime"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 13.0
+offset_right = 41.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameTImeTimer" type="Timer" parent="GameTime"]
+autostart = true
+
+[node name="GameCountdown" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameCountdownTimer" type="Timer" parent="GameCountdown"]
+
+[node name="GameCountdownText" type="Label" parent="GameCountdown"]
+visible = false
+layout_mode = 0
+offset_left = 607.0
+offset_top = 503.0
+offset_right = 689.0
+offset_bottom = 575.0
+theme_override_font_sizes/font_size = 50
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="GameTime/GameTImeTimer" to="." method="_on_game_t_ime_timer_timeout"]
+[connection signal="timeout" from="GameCountdown/GameCountdownTimer" to="." method="_on_game_countdown_timer_timeout"]

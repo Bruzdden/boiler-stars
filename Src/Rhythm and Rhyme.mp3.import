@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsmta2h8lyxvk"
+path="res://.godot/imported/Rhythm and Rhyme.mp3-f8624468b8ce3ea3ca7dfa2f09100631.mp3str"
+
+[deps]
+
+source_file="res://Src/Rhythm and Rhyme.mp3"
+dest_files=["res://.godot/imported/Rhythm and Rhyme.mp3-f8624468b8ce3ea3ca7dfa2f09100631.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

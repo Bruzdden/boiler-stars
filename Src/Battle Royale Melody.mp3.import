@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://deofgvxr06tkk"
+path="res://.godot/imported/Battle Royale Melody.mp3-e1ada3f60caad8734bfa9fee0a200b21.mp3str"
+
+[deps]
+
+source_file="res://Src/Battle Royale Melody.mp3"
+dest_files=["res://.godot/imported/Battle Royale Melody.mp3-e1ada3f60caad8734bfa9fee0a200b21.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

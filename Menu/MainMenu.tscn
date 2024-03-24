@@ -1,0 +1,146 @@
+[gd_scene load_steps=10 format=3 uid="uid://clbjb88im4w4p"]
+
+[ext_resource type="Script" path="res://Menu/Buttons/TextButton.gd" id="1_8ovde"]
+[ext_resource type="Script" path="res://Menu/MainMenu.gd" id="1_s78m0"]
+[ext_resource type="Texture2D" uid="uid://4hvms0hld5ne" path="res://Src/kelly.png" id="3_wp3mc"]
+[ext_resource type="Texture2D" uid="uid://b72flcffuxard" path="res://Src/settingIcon.png" id="4_og7s2"]
+[ext_resource type="AudioStream" uid="uid://bsmta2h8lyxvk" path="res://Src/Rhythm and Rhyme.mp3" id="5_e7eyy"]
+[ext_resource type="AudioStream" uid="uid://b2cqptvlai21v" path="res://Src/click-21156 (1).mp3" id="6_7rb5g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ni4c8"]
+bg_color = Color(0.886275, 0.72549, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.603922, 0.482353, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2kj4"]
+bg_color = Color(0.847059, 0, 0.937255, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.645776, 0.000671135, 0.715825, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ndqu"]
+bg_color = Color(0.921569, 0.796078, 0.2, 1)
+border_width_left = 200
+border_width_top = 200
+border_width_right = 200
+border_width_bottom = 200
+border_color = Color(0.545098, 0.466667, 0.0784314, 1)
+border_blend = true
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s78m0")
+
+[node name="Start" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 593.0
+offset_right = 1240.0
+offset_bottom = 693.0
+
+[node name="Panel" type="Panel" parent="Start"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ni4c8")
+script = ExtResource("1_8ovde")
+
+[node name="Label" type="Label" parent="Start"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 12.0
+offset_right = 178.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="Boiler" type="Sprite2D" parent="."]
+position = Vector2(670, 418)
+rotation = -2.67035
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_wp3mc")
+
+[node name="Boilers" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 263.0
+offset_right = 193.0
+offset_bottom = 391.0
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Panel" type="Panel" parent="Boilers"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2kj4")
+script = ExtResource("1_8ovde")
+
+[node name="Label" type="Label" parent="Boilers"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 129.0
+offset_right = 147.0
+offset_bottom = 201.0
+theme_override_font_sizes/font_size = 50
+text = "Boilers"
+
+[node name="TextureRect" type="TextureRect" parent="Boilers"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 117.0
+offset_bottom = 118.0
+texture = ExtResource("3_wp3mc")
+expand_mode = 1
+
+[node name="Settings" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 40.0
+offset_right = 1228.0
+offset_bottom = 168.0
+texture_normal = ExtResource("4_og7s2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BG" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ndqu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_e7eyy")
+autoplay = true
+max_distance = 10000.0
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7rb5g")
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Boilers" to="." method="_on_boilers_pressed"]
