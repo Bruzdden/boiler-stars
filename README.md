@@ -29,6 +29,7 @@ Lukáš Divíšek
 ## Další
 - Mapy jsou tvořeny TileMap.
 - Hudbu jsem vytvořil díky SunoAi, které jste doporučil v hodině (teda ukázal vam to Karel). Ve hře je také zvuk kliknutí, který jsem udělal sám. Zkoušel jsem dělat další zvuky jako například chození v trávě, ale v přírodě je přiroda a nemám bohužel kvalitní mikrofon a další jsem nestíhal.
+- Použil jsem Godot 4 asset joysticku [joystick](https://godotengine.org/asset-library/asset/1787)
 
 
 ## YT video GamePlay z hry
