@@ -71,6 +71,11 @@ if bulletReady == true and $BulletTimer.is_stopped():
 ## Audio
 - Hudba v pozadí je vytvořena pomocí [Suno AI](https://www.suno.ai/)
 - Zvuk kliknutí jsem nahrál přes audacity jako ťuk
+  
+
+[halo[(https://github.com/Bruzdden/boiler-stars/assets/76947123/4a313c68-6d4c-4603-b396-ce8178256d84)
+
+
 
 ## Video GamePlay
 - [Video](https://youtu.be/s0drJbCHgkk)
