@@ -9,4 +9,5 @@ func _on_pressed():
 	$Click.play()
 ```
 - Když se klikne na tlačítko, tak to přehraje zvuk kliknutí
+  
 ![AudioClick](https://github.com/Bruzdden/boiler-stars/assets/76947123/2575d192-bcba-406c-8708-d4796ed27a5c)
