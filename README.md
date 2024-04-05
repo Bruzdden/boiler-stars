@@ -23,6 +23,23 @@ func _shoot():
 				weaponInstance.rotation = AimShow.rotation + 1.5
 				add_child(weaponInstance)
 ```
+## Ukázká kódu přebíjení
+- Hráč má tří bary nábojů, když vystřelí, tím že pustí joystick, tak se odebere jeden bar ve funkci _ammo() a vystřelí ve funkci _shoot()
+- Joystick ovládá rotaci postavy, kam míří a kdy vystřelí
+```gdscript
+if bulletReady == true and $BulletTimer.is_stopped():
+		if aim and aim.is_pressed:
+			get_node("AimShow/AimPanel"+str(Global.Save.Selected_boiler+1)).show()
+			#AimShow.rotation = lerp_angle(AimShow.rotation, aim.output.angle() - 1.5, delta)
+			AimShow.rotation = aim.output.angle() - 1.5
+			
+			shootReadyTimer.start()
+		elif not aim.is_pressed and not shootReadyTimer.is_stopped():
+			get_node("AimShow/AimPanel"+str(Global.Save.Selected_boiler+1)).hide()
+			if currentAmmo > 0:
+				_ammo()
+				_shoot()
+```
 
 ## Výběr postav
 - Hra začíná na obrazovce jménen "ChooseBoiler.tscn", kde jsou tří postavy v Sprite2D a mají každy tlačítka Try a Select.
