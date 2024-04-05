@@ -6,6 +6,24 @@ Lukáš Divíšek
 - V celku hra má být o tom, že si hráč vybere jednu ze tří postav, kterou si může vyzkoušet a potom vybrat.
 - Hráč poté může hrát game mode jménem "GemGrab", kde je hráč proti třemi nepřátelům a každý se snaží jako první získat deset gemů. Když tým získá deset gemů, tak by se měli schovat a po patnácti sekundách, kdy tým drží všechny gemy, tak ten tým vyhrává.
 
+## Ukázka kódu střílení
+- Když si hráč vybere postavu číslo jedna, tak kód generuje náboje pomocí .instantiate(), náboji se určí pozice a přesná rotace, která způsobí jakým směrem se mění linear_velocity náboje. Takže v podstatě vystřelí.
+```gdscript
+func _shoot():
+	regenerationTimer.stop()
+	if bulletReady == true and $BulletTimer.is_stopped():
+		if Global.Save.Selected_boiler == 0:
+			for i in Boiler.bullet_count:
+				bulletReady = false
+				$BulletTimer.start()
+				var weaponInstance = Bullet.instantiate()
+				weaponInstance.position = $Boiler.position
+				var dir = Vector2(1,0).rotated(AimShow.rotation + 1.5)
+				weaponInstance.linear_velocity = dir * Boiler.damage_speed
+				weaponInstance.rotation = AimShow.rotation + 1.5
+				add_child(weaponInstance)
+```
+
 ## Výběr postav
 - Hra začíná na obrazovce jménen "ChooseBoiler.tscn", kde jsou tří postavy v Sprite2D a mají každy tlačítka Try a Select.
 ![ChooseBoiler](https://github.com/Bruzdden/boiler-stars/assets/76947123/0e365166-e8a5-4e05-bd04-96c95c1c8c82)
