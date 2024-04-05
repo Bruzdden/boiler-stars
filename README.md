@@ -26,19 +26,19 @@ Lukáš Divíšek
 - "Boiler.tscn" je hlavní instance kde je hráč. V této instanci jsou například pohyby díky joysticku. UI použítím CanvasLayeru. Střílecí funkce a tak dále.
 ![Boiler](https://github.com/Bruzdden/boiler-stars/assets/76947123/e56abb6e-7564-4532-be5e-fafebc8a0472)
 
-## Další
+## Pozadí
 - Mapy jsou tvořeny TileMap.
-- Hudbu jsem vytvořil díky SunoAi, které jste doporučil v hodině (teda ukázal vam to Karel). Ve hře je také zvuk kliknutí, který jsem udělal sám. Zkoušel jsem dělat další zvuky jako například chození v trávě, ale v přírodě je přiroda a nemám bohužel kvalitní mikrofon a další jsem nestíhal.
+- Jednoduchý Tileset jsem nakreslil sám pomocí webové aplikace [Piskell](https://www.piskelapp.com/)
+
+## Assety
 - Použil jsem Godot 4 asset joysticku. [Joystick](https://godotengine.org/asset-library/asset/1787)
 
+## Audio
+- Hudba v pozadí je vytvořena pomocí [Suno AI](https://www.suno.ai/)
+- Zvuk kliknutí jsem nahrál přes audacity jako ťuk
 
-## YT video GamePlay z hry
-[Video](https://youtu.be/s0drJbCHgkk)
+## Video GamePlay
+- [Video](https://youtu.be/s0drJbCHgkk)
 
-Celý projekt jsem dělal sám.
+# Autorem projektu je Lukáš Divíšek
 
-## Lukáš Divíšek
-
-
-
- 
