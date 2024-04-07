@@ -1,6 +1,7 @@
 # Shoot
 - Díky střílení hráč může bojovat s nepřáteli
 ## Ukázka kódu střílení
+- Při výstřelu hráč spustí časovač, díky kterému není možné pořád střílet rychle dokola
 ```gdscript
 func _shoot():
 	regenerationTimer.stop()
@@ -10,7 +11,7 @@ func _shoot():
 				bulletReady = false
 				$BulletTimer.start()
 ```
-- Při výstřelu hráč spustí časovač, díky kterému není možné pořád střílet rychle dokola
+- Tato část slouží k vytvoření instance Bullet. Poté se určí její pozice a rotace, podle toho kam hráč míří. Ke konci se vypočítá trajektorie kam a jak rychle náboj poletí
 ```gdscript
 				var weaponInstance = Bullet.instantiate()
 				weaponInstance.position = $Boiler.position
@@ -19,8 +20,9 @@ func _shoot():
 				weaponInstance.rotation = AimShow.rotation + 1.5
 				add_child(weaponInstance)
 ```
-- Tato část slouží k vytvoření instance Bullet. Poté se určí její pozice a rotace, podle toho kam hráč míří. Ke konci se vypočítá trajektorie kam a jak rychle náboj poletí
 ## Ukázká kódu přebíjení
+- Hráč má tří bary nábojů, když vystřelí, tím že pustí [joystick](https://godotengine.org/asset-library/asset/1787), tak se odebere jeden bar ve funkci _ammo() a vystřelí ve funkci _shoot()
+- [Joystick](https://godotengine.org/asset-library/asset/1787) ovládá rotaci postavy, kam míří a kdy vystřelí
 ```gdscript
 if bulletReady == true and $BulletTimer.is_stopped():
 		if aim and aim.is_pressed:
@@ -35,8 +37,6 @@ if bulletReady == true and $BulletTimer.is_stopped():
 				_ammo()
 				_shoot()
 ```
-- Hráč má tří bary nábojů, když vystřelí, tím že pustí joystick, tak se odebere jeden bar ve funkci _ammo() a vystřelí ve funkci _shoot()
-- Joystick ovládá rotaci postavy, kam míří a kdy vystřelí
 
 
 
