@@ -17,5 +17,6 @@ move_and_collide(move_vector * Boiler.speed * delta)
 ## Kolize
 - Díky kolizi hráč nechodí přes zdi a může také dostávat damage
 - Hráč je na vstvě 2 a koliduje s objekty na vstvách 3 a 4 kde jsou zdi a nepřátelé
+
 ![Kolize](https://github.com/Bruzdden/boiler-stars/assets/76947123/50a572e3-19c7-4cc9-b162-11826c7cea9c)
 
