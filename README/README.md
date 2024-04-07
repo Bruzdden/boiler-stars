@@ -9,4 +9,6 @@
 - [Shoot](Shoot.md)
 - [Postavy](Postavy.md)
 - [Audio](Audio.md)
+## Video GamePlay
+- [Video](https://youtu.be/s0drJbCHgkk)
 # Autorem projektu je Lukáš Divíšek
