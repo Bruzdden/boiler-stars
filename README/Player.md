@@ -1,5 +1,5 @@
 # Player
-- Každý hráč může hrát jednu ze tří [posta](Postavy.md)
+- Každý hráč může hrát jednu ze tří [postav](Postavy.md)
 ## Pohyb
 - Tento kód je ve funcki [_process()](https://docs.godotengine.org/en/stable/tutorials/scripting/idle_and_physics_processing.html), která se automaticky volá každých 10 ms
 - Za vektor se dají konkrétní hodnoty vstupu, kam míří [joystick](https://godotengine.org/asset-library/asset/1787)
