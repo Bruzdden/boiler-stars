@@ -13,6 +13,7 @@ move_and_collide(move_vector * Boiler.speed * delta)
 ## UI
 - Díky UI je hra zajímavější
 - Ve hře je UI jako: Život bar, bar nábojů, jméno postavy a kruh díky kterému postava nesplývá s okolím
+
 ![UI2](https://github.com/Bruzdden/boiler-stars/assets/76947123/e6bc6d4b-68c6-471d-a99f-9db999075d56)
 ## Kolize
 - Díky kolizi hráč nechodí přes zdi a může také dostávat damage
