@@ -1,4 +1,5 @@
 # Postavy
+[HOME](README.md)
 - Každá postava má svoje unikátní statistiky, jako například životy, damage, typ.
 ```gdscript
 "Kelly" : {
