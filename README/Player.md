@@ -1,4 +1,5 @@
 # Player
+[HOME](README.md)
 - Každý hráč může hrát jednu ze tří [postav](Postavy.md)
 ## Pohyb
 - Tento kód je ve funcki [_process()](https://docs.godotengine.org/en/stable/tutorials/scripting/idle_and_physics_processing.html), která se automaticky volá každých 10 ms
