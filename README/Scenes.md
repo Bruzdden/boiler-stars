@@ -1,4 +1,5 @@
 # Scenes
+[HOME](README.md)
 ## Výběr postav
 - Hra začíná na obrazovce jménen "ChooseBoiler.tscn", kde jsou tří postavy v Sprite2D a mají každy tlačítka Try a Select.
 ![ChooseBoiler](https://github.com/Bruzdden/boiler-stars/assets/76947123/0e365166-e8a5-4e05-bd04-96c95c1c8c82)
