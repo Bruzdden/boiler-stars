@@ -1,4 +1,5 @@
 # Shoot
+[HOME](README.md)
 - Díky střílení hráč může bojovat s nepřáteli
 ## Ukázka kódu střílení
 - Při výstřelu hráč spustí časovač, díky kterému není možné pořád střílet rychle dokola
